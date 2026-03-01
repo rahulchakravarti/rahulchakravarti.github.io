@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahul Chakravarti — SDET & Automation Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --bg2: #0d1220;
+      --card: #111827;
+      --border: #1e2d45;
+      --green: #00e5ff;
+      --green2: #00b8d4;
+      --accent: #ff6b6b;
+      --accent2: #ffa94d;
+      --text: #cdd9e5;
+      --muted: #546e7a;
+      --white: #e8f4f8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,14,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      color: var(--green);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span { color: var(--muted); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      transition: color 0.2s;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .nav-links a.hire {
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 4px 12px;
+      border-radius: 3px;
+      font-size: 0.72rem;
+    }
+
+    .nav-links a.hire:hover {
+      background: var(--green);
+      color: var(--bg);
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,107,107,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 1rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.r { background: #ff5f57; }
+    .dot.y { background: #ffbd2e; }
+    .dot.g { background: #28ca41; }
+
+    .terminal-title { margin-left: 8px; }
+
+    .terminal-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .prompt { color: var(--green); }
+    .prompt::before { content: '❯ '; }
+
+    .cmd { color: var(--accent2); }
+    .str { color: #a8d8a8; }
+    .key { color: var(--green2); }
+    .val { color: var(--accent2); }
+    .bracket { color: var(--muted); }
+    .num { color: #c792ea; }
+
+    .json-block {
+      margin: 0.5rem 0 0.5rem 1rem;
+      font-size: 0.85rem;
+      line-height: 2;
+    }
+
+    .hero-tagline {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-tagline span { color: var(--green); }
+
+    h1 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 .accent { color: var(--green); }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-sub span { color: var(--accent); }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--bg);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover { background: var(--green2); transform: translateY(-2px); }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+
+    /* STATS STRIP */
+    .stats-strip {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 3rem;
+      background: var(--card);
+    }
+
+    .stat {
+      flex: 1;
+      padding: 1.2rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--green);
+      display: block;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-num {
+      font-size: 0.7rem;
+      color: var(--green);
+      letter-spacing: 0.1em;
+    }
+
+    h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.6rem;
+      color: var(--white);
+    }
+
+    h2 .underscore {
+      color: var(--green);
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.9;
+    }
+
+    .about-text strong { color: var(--green); font-weight: 600; }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .about-card .prompt-line {
+      font-size: 0.78rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+
+    .tag {
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.2);
+      color: var(--green);
+      font-size: 0.68rem;
+      padding: 2px 10px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    .tag.red {
+      background: rgba(255,107,107,0.08);
+      border-color: rgba(255,107,107,0.2);
+      color: var(--accent);
+    }
+
+    .tag.yellow {
+      background: rgba(255,169,77,0.08);
+      border-color: rgba(255,169,77,0.2);
+      color: var(--accent2);
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .skill-card:hover { border-color: var(--green); }
+
+    .skill-card-title {
+      font-size: 0.72rem;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-card-title .icon { font-size: 1rem; }
+
+    /* EXPERIENCE */
+    .exp-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--green);
+    }
+
+    .exp-item.intern::before { background: var(--accent2); }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .exp-company {
+      font-size: 0.8rem;
+      color: var(--green);
+      margin-top: 2px;
+    }
+
+    .exp-company.orange { color: var(--accent2); }
+
+    .exp-date {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .exp-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .exp-list li {
+      font-size: 0.82rem;
+      color: var(--text);
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .exp-list li::before {
+      content: '▸';
+      color: var(--green);
+      position: absolute;
+      left: 0;
+    }
+
+    .exp-list li strong { color: var(--accent2); }
+
+    /* PROJECTS */
+    .proj-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .proj-card:hover { border-color: var(--green); }
+
+    .proj-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .proj-date {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .proj-desc {
+      font-size: 0.83rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* CONTACT */
+    #contact {
+      padding-bottom: 6rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .contact-info p {
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 0.6rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .contact-link .link-icon { font-size: 1rem; min-width: 20px; }
+
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+
+    .form-row {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.6rem 0.9rem;
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--green);
+    }
+
+    .form-textarea { resize: vertical; min-height: 100px; }
+
+    .form-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--green);
+      color: var(--bg);
+      border: none;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+
+    .form-btn:hover { background: var(--green2); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--green); text-decoration: none; }
+
+    /* AWARD BADGE */
+    .award-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,169,77,0.08);
+      border: 1px solid rgba(255,169,77,0.25);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      font-size: 0.75rem;
+      color: var(--accent2);
+      margin-top: 1.5rem;
+    }
+
+    /* ANIMATIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+
+    /* SCANLINE OVERLAY */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.015) 2px,
+        rgba(0,0,0,0.015) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @media (max-width: 700px) {
+      .about-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; }
+      .stats-strip { flex-wrap: wrap; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      nav .nav-links { gap: 0.75rem; }
+      .nav-links li:nth-child(-n+3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">~/rahul_chakravarti <span>▋</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">01. about</a></li>
+    <li><a href="#skills">02. skills</a></li>
+    <li><a href="#experience">03. experience</a></li>
+    <li><a href="#projects">04. projects</a></li>
+    <li><a href="#contact">05. contact</a></li>
+    <li><a href="https://linkedin.com/in/rahulchakravarti0" class="hire" target="_blank">--hire-me ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="terminal-bar">
+      <div class="dot r"></div>
+      <div class="dot y"></div>
+      <div class="dot g"></div>
+      <span class="terminal-title">rahul@portfolio ~ bash</span>
+    </div>
+
+    <div class="terminal-box fade-in">
+      <div class="prompt-line" style="font-size:0.85rem; margin-bottom:0.4rem;">
+        <span class="prompt"></span><span class="cmd">whoami</span>
+      </div>
+      <div class="prompt-line" style="font-size:0.85rem; margin-bottom:1rem;">
+        <span class="prompt"></span><span class="cmd">cat sdet.json</span>
+      </div>
+      <div class="json-block">
+        <span class="bracket">{</span><br>
+        &nbsp;&nbsp;<span class="key">"name"</span>: <span class="str">"Rahul Chakravarti"</span>,<br>
+        &nbsp;&nbsp;<span class="key">"title"</span>: <span class="str">"SDET | Automation Test Engineer"</span>,<br>
+        &nbsp;&nbsp;<span class="key">"experience"</span>: <span class="str">"4+ years"</span>,<br>
+        &nbsp;&nbsp;<span class="key">"company"</span>: <span class="str">"Hansen Technologies, Pune"</span>,<br>
+        &nbsp;&nbsp;<span class="key">"stack"</span>: <span class="bracket">[</span><span class="str">"Selenium"</span>, <span class="str">"Playwright"</span>, <span class="str">"Java"</span>, <span class="str">"AWS"</span>, <span class="str">"Kubernetes"</span><span class="bracket">]</span>,<br>
+        &nbsp;&nbsp;<span class="key">"status"</span>: <span class="str">"open_to_opportunities"</span>,<br>
+        &nbsp;&nbsp;<span class="key">"superpower"</span>: <span class="str">"AI-powered test automation 🤖"</span><br>
+        <span class="bracket">}</span>
+      </div>
+      <div style="margin-top:1rem; font-size:0.78rem; color:var(--muted);">
+        <span class="prompt"></span><span style="color:var(--green);"># Loading portfolio...</span>
+      </div>
+    </div>
+
+    <h1 class="fade-in">Hi, I'm <span class="accent">Rahul.</span><br>I break things <span style="color:var(--accent)">on purpose.</span></h1>
+
+    <p class="hero-sub fade-in">// test by day · automate by night · <span>pune, india</span></p>
+
+    <div class="hero-btns fade-in">
+      <a href="#contact" class="btn btn-primary">▶ get_in_touch()</a>
+      <a href="#experience" class="btn btn-ghost">view_experience →</a>
+      <a href="#projects" class="btn btn-ghost">🤖 ai_projects ↓</a>
+    </div>
+
+    <div class="stats-strip fade-in">
+      <div class="stat">
+        <span class="stat-num">4+</span>
+        <span class="stat-label">Years Exp.</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">300+</span>
+        <span class="stat-label">Test Cases</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label" style="font-size:1.5rem; display:block; color:var(--green); font-family:'Space Mono'">30%</span>
+        <span class="stat-label">Less Manual Testing</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">85%+</span>
+        <span class="stat-label">Test Coverage</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">50%</span>
+        <span class="stat-label">Faster Onboarding</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">// 01</span>
+    <h2>about<span class="underscore">_</span>me</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <div style="font-size:0.8rem; color:var(--muted); margin-bottom:1rem;">$ whoami --verbose</div>
+      <p>
+        I'm <strong>Rahul Chakravarti</strong>, an Automation Test Engineer based in <strong>Pune, Maharashtra</strong> with <strong>4+ years</strong> of experience building scalable UI and API automation frameworks.
+      </p>
+      <p>
+        I work at <strong>Hansen Technologies</strong> — building and maintaining production-grade automation for complex telecom billing systems. My core focus: Selenium & Playwright (Java), AWS/EKS deployments, and regression validation across distributed microservices.
+      </p>
+      <p>
+        What sets me apart is my embrace of <strong>AI-driven automation</strong> — from Playwright AI Agents and GitHub Copilot integrations to building a custom AI chat tool that boosted team productivity by 50%.
+      </p>
+      <p>
+        I believe quality isn't an afterthought — it's engineered in from the start.
+      </p>
+      <div class="award-badge">
+        🏆 <span><strong>SALUTING YOUR SUCCESS Award</strong> — Hansen Technologies, Sep 2023</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="about-card">
+        <div class="prompt-line" style="font-size:0.78rem; color:var(--muted); margin-bottom:1rem;">$ cat role.json</div>
+        <div style="font-size:0.82rem; line-height:2;">
+          <span class="key">Role</span>: <span class="str">Automation Test Engineer</span><br>
+          <span class="key">Focus</span>: <span class="str">UI + API Automation</span><br>
+          <span class="key">Location</span>: <span class="str">Pune, India 🇮🇳</span><br>
+          <span class="key">Education</span>: <span class="str">B.Tech CSE (8.5 GPA)</span><br>
+          <span class="key">AI Tooling</span>: <span class="str">Playwright MCP, Copilot</span>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <div style="font-size:0.7rem; color:var(--muted); margin-bottom:0.5rem;">// automation stack</div>
+          <div class="tag-list">
+            <span class="tag">Selenium</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">Java</span>
+            <span class="tag">TestNG</span>
+            <span class="tag">REST Assured</span>
+            <span class="tag">Postman</span>
+          </div>
+          <div style="font-size:0.7rem; color:var(--muted); margin: 0.8rem 0 0.5rem;">// cloud & infra</div>
+          <div class="tag-list">
+            <span class="tag yellow">AWS EKS</span>
+            <span class="tag yellow">Kubernetes</span>
+            <span class="tag yellow">Docker</span>
+            <span class="tag yellow">Jenkins</span>
+          </div>
+          <div style="font-size:0.7rem; color:var(--muted); margin: 0.8rem 0 0.5rem;">// ai-powered</div>
+          <div class="tag-list">
+            <span class="tag red">Playwright AI Agents</span>
+            <span class="tag red">GitHub Copilot</span>
+            <span class="tag red">MCP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">// 02</span>
+    <h2>tech<span class="underscore">_</span>stack</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="icon">🧪</span> Automation Testing</div>
+      <div class="tag-list">
+        <span class="tag">Selenium WebDriver</span>
+        <span class="tag">Playwright</span>
+        <span class="tag">Cypress</span>
+        <span class="tag">Appium</span>
+        <span class="tag">REST Assured</span>
+        <span class="tag">AI/ML Model Testing</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="icon">☕</span> Languages & Frameworks</div>
+      <div class="tag-list">
+        <span class="tag">Java</span>
+        <span class="tag">Python</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">TestNG</span>
+        <span class="tag">POM</span>
+        <span class="tag">Data-Driven</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="icon">☁️</span> Cloud & DevOps</div>
+      <div class="tag-list">
+        <span class="tag yellow">AWS EKS</span>
+        <span class="tag yellow">EC2 · S3</span>
+        <span class="tag yellow">API Gateway</span>
+        <span class="tag yellow">Route 53</span>
+        <span class="tag yellow">Cognito</span>
+        <span class="tag yellow">Docker</span>
+        <span class="tag yellow">Kubernetes</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="icon">🔄</span> CI/CD & Tooling</div>
+      <div class="tag-list">
+        <span class="tag">Jenkins</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Maven</span>
+        <span class="tag">Gradle</span>
+        <span class="tag">SonarQube</span>
+        <span class="tag">JFrog Xray</span>
+        <span class="tag">JIRA</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="icon">🗄️</span> API & Database</div>
+      <div class="tag-list">
+        <span class="tag">Postman</span>
+        <span class="tag">Swagger UI</span>
+        <span class="tag">REST API</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">MongoDB</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="icon">🤖</span> AI & Productivity</div>
+      <div class="tag-list">
+        <span class="tag red">Playwright AI Agents</span>
+        <span class="tag red">GitHub Copilot</span>
+        <span class="tag red">Playwright MCP</span>
+        <span class="tag red">ChatGPT</span>
+        <span class="tag red">JIRA MCP</span>
+        <span class="tag red">Tempo MCP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">// 03</span>
+    <h2>work<span class="underscore">_</span>experience</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <div>
+        <div class="exp-title">Automation Test Engineer</div>
+        <div class="exp-company">$ Hansen Technologies · Pune, India</div>
+      </div>
+      <div class="exp-date">Aug '22 — Present<br><span style="color:var(--green);font-size:0.68rem;">▸ PROMOTED Oct '24</span></div>
+    </div>
+    <ul class="exp-list">
+      <li>Designed and executed Selenium (Java) & Playwright automation frameworks using TestNG and Page Object Model (POM) with data-driven testing.</li>
+      <li>Automated complex UI scenarios: dynamic elements, iframes, alerts, pop-ups, and multiple windows using Explicit and Fluent waits.</li>
+      <li>Deployed and configured applications on <strong>AWS EKS clusters</strong>, ensuring stability across distributed environments.</li>
+      <li>Explored and implemented <strong>Playwright AI Agents</strong> and Playwright MCP, enhancing automation intelligence and test scalability.</li>
+      <li>Developed an <strong>AI-enabled utility</strong> for automated screenshot capture using CSV-driven test data, cutting manual verification effort significantly.</li>
+      <li>Improved overall Regression Testing efficiency by <strong>~30%</strong>, reducing manual efforts and ensuring stable multi-version deployments across AWS & Kubernetes.</li>
+      <li>Implemented a <strong>Chat-mode AI agent</strong> with MCP integrations in JIRA and Copilot to automate Epic, Backlog, Story, and Subtask creation.</li>
+      <li>Configured <strong>Tempo MCP automation</strong> to auto-log work hours, reducing manual effort and improving time-tracking accuracy.</li>
+      <li>Delivered Regression Execution Reports and Release Validation Summaries; created and maintained a Product Compatibility Matrix.</li>
+    </ul>
+    <div class="tag-list" style="margin-top:1rem;">
+      <span class="tag">Selenium</span>
+      <span class="tag">Playwright</span>
+      <span class="tag">Java</span>
+      <span class="tag">TestNG</span>
+      <span class="tag yellow">AWS EKS</span>
+      <span class="tag yellow">Kubernetes</span>
+      <span class="tag red">AI Agents</span>
+      <span class="tag red">MCP</span>
+    </div>
+  </div>
+
+  <div class="exp-item intern">
+    <div class="exp-header">
+      <div>
+        <div class="exp-title">Technical Operations Intern</div>
+        <div class="exp-company orange">$ Paytm Payments Bank · Noida, India</div>
+      </div>
+      <div class="exp-date">Mar '22 — Aug '22</div>
+    </div>
+    <ul class="exp-list">
+      <li>Managed incident handling, defect tracking and test case execution, ensuring timely logging and resolution.</li>
+      <li>Coordinated with Development, Deployment and vendor teams to follow up on bug fixes and adherence to TAT targets.</li>
+      <li>Analyzed root causes of recurring defects and contributed to process improvements by implementing preventive measures.</li>
+    </ul>
+    <div class="tag-list" style="margin-top:1rem;">
+      <span class="tag yellow">Incident Management</span>
+      <span class="tag yellow">Defect Tracking</span>
+      <span class="tag yellow">JIRA</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">// 04</span>
+    <h2>key<span class="underscore">_</span>projects</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-title">⚙️ Core Automation Framework (CAF)</div>
+    <div class="proj-date">$ Hansen Technologies · Mar 2023 — Present</div>
+    <p class="proj-desc">
+      Built a scalable, modular automation framework from scratch using Java, TestNG, Maven, REST Assured, and Selenium with a Hybrid Framework Design (POM + Data-Driven + Keyword-Driven). Automated 300+ test cases across telecom modules. Integrated with Jenkins CI/CD, SonarQube, and JFrog Xray for continuous execution, code quality, and security compliance.
+    </p>
+    <div class="tag-list">
+      <span class="tag">Java</span>
+      <span class="tag">TestNG</span>
+      <span class="tag">Maven</span>
+      <span class="tag">Selenium</span>
+      <span class="tag">REST Assured</span>
+      <span class="tag">Jenkins</span>
+      <span class="tag">SonarQube</span>
+      <span class="tag">JFrog Xray</span>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-title">🤖 CAF Assistant — AI-Powered Framework Copilot</div>
+    <div class="proj-date">$ Hansen Technologies · 2023 — Present</div>
+    <p class="proj-desc">
+      Built a custom GitHub Copilot Chat mode tool on top of CAF, enabling natural language interaction for prompt-driven test script generation and framework queries. Reduced onboarding time for new QA team members and boosted team-wide code productivity by <strong style="color:var(--accent2)">50%</strong> through AI-assisted automation script development.
+    </p>
+    <div class="tag-list">
+      <span class="tag red">GitHub Copilot</span>
+      <span class="tag red">AI/ML</span>
+      <span class="tag red">Chat Mode</span>
+      <span class="tag">Java</span>
+      <span class="tag">Natural Language</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">// 05</span>
+    <h2>get<span class="underscore">_</span>in_touch()</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>
+        Whether you have a role in mind, a project to discuss, or want to collaborate on AI-driven test automation — my inbox is always open. I typically respond within 24 hours.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:rahulchkrvrti2000@gmail.com" class="contact-link">
+          <span class="link-icon">✉</span>
+          rahulchkrvrti2000@gmail.com
+        </a>
+        <a href="tel:+919329968752" class="contact-link">
+          <span class="link-icon">📞</span>
+          +91 9329968752
+        </a>
+        <a href="https://linkedin.com/in/rahulchakravarti0" target="_blank" class="contact-link">
+          <span class="link-icon">in</span>
+          linkedin.com/in/rahulchakravarti0
+        </a>
+        <a href="https://github.com/rahulchakravarti" target="_blank" class="contact-link">
+          <span class="link-icon">⬡</span>
+          github.com/rahulchakravarti
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div style="font-size:0.78rem; color:var(--muted); margin-bottom:1.5rem;">$ send_message --to rahul@portfolio</div>
+      <div class="form-row">
+        <label class="form-label">name *</label>
+        <input class="form-input" type="text" placeholder="Your name" />
+      </div>
+      <div class="form-row">
+        <label class="form-label">email *</label>
+        <input class="form-input" type="email" placeholder="your@email.com" />
+      </div>
+      <div class="form-row">
+        <label class="form-label">subject</label>
+        <input class="form-input" type="text" placeholder="Opportunity / Collaboration" />
+      </div>
+      <div class="form-row">
+        <label class="form-label">message *</label>
+        <textarea class="form-textarea" placeholder="Tell me about the role or project..."></textarea>
+      </div>
+      <button class="form-btn" onclick="this.textContent='✓ Sent! I\'ll reply within 24 hrs.'">▶ send_message()</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>rahul_chakravarti © 2026 · test + automate · pune, india</p>
+  <p style="margin-top:0.5rem;">
+    <a href="mailto:rahulchkrvrti2000@gmail.com">email</a> ·
+    <a href="https://linkedin.com/in/rahulchakravarti0" target="_blank">linkedin</a> ·
+    <a href="https://github.com/rahulchakravarti" target="_blank">github</a> ·
+    <a href="#hero">↑ top</a>
+  </p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.exp-item, .proj-card, .skill-card, .about-card, .stat').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--green)' : '';
+    });
+  });
+</script>
+</body>
+</html>
